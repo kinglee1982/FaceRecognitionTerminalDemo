@@ -23,7 +23,8 @@ sudo apt install cmake ninja
 ### 编译
 
 ```bash
-./build.sh --build-type=Debug --build-dir=$(pwd)/build --ninja --build-3rd
+cd FaceRecognitionTerminalDemo
+./build.sh --build-type=Debug --build-dir=$(pwd)/build --ninja
 ```
 
 ### 运行

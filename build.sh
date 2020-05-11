@@ -22,10 +22,6 @@ for i in "$@"; do
         cmake_generator="Ninja"
         shift # past argument with no value
         ;;
-    --build-3rd)
-        build_3rd="yes"
-        shift # past argument with no value
-        ;;
     *)
         # unknown option
         ;;
