@@ -67,17 +67,17 @@ if(DOWNLOAD_DEPENDENCY)
     ${THIRD_PARTY_PREFIX})
 
   download_and_extract(
-    https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/hisi/ai-dv300-sdk.tgz
-    ${DOWNLOAD_DIR}/ai-dv300-sdk.tgz
+    https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/hisi/rp-dv300-sdk.tgz
+    ${DOWNLOAD_DIR}/rp-dv300-sdk.tgz
     SHA256
     f9075af18adbb95a21789f6d79ca98fa1f92fee0696a2d156a88425fa4efdbcb
     ${HISI_SDK_PREFIX})
 
   download_and_extract(
-    https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/releases/QUFaceSDK-0.1.0-hisi-ai-dv300.tar.gz
-    ${DOWNLOAD_DIR}/QUFaceSDK-0.1.0-hisi-ai-dv300.tar.gz
+    https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/releases/QUFaceSDK-0.9.1-hisi-rp-dv300.tar.gz
+    ${DOWNLOAD_DIR}/QUFaceSDK-0.9.1-hisi-rp-dv300.tar.gz
     SHA256
-    61c97b1bd8a1a0fe443b46de3e056f2ce7f7c88538fc80c696d4f72418463149
+    e9e8c5f77e12423fd035c056677484d37eb99e5fe93d94537e7b6a6d45f7fd00
     ${QUFACE_SDK_PREFIX})
 
   download_and_extract(

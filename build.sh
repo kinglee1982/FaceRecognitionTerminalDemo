@@ -38,7 +38,7 @@ dep_dir=$source_dir/deps
 mkdir -p $build_dir || true
 pushd $build_dir
 cmake $source_dir -G "$cmake_generator" \
-    -DHISI_SDK_PLATFORM=ai-dv300 \
+    -DHISI_SDK_PLATFORM=rp-dv300 \
     -DDOWNLOAD_DEPENDENCY=ON \
     -DPROJECT_DEPENDENCY_DIR=$dep_dir \
     -DCMAKE_TOOLCHAIN_FILE=$source_dir/cmake/himix200.toolchain.cmake \
