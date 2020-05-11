@@ -31,9 +31,9 @@ option(DOWNLOAD_DEPENDENCY "Download 3rd party dependencies from remote" ON)
 set(PROJECT_DEPENDENCY_DIR
     "${PROJECT_SOURCE_DIR}/deps"
     CACHE STRING "Project dependencies dir")
-set(MODEL_FILE_PREFIX
+set(RESOURCE_PREFIX
     "${PROJECT_SOURCE_DIR}/resources"
-    CACHE STRING "Dir for model file")
+    CACHE STRING "Dir for model & font file")
 set(HISI_SDK_PREFIX
     "${PROJECT_DEPENDENCY_DIR}/${HISI_SDK_PLATFORM}"
     CACHE STRING "Dir for hisi sdk")
@@ -85,7 +85,13 @@ if(DOWNLOAD_DEPENDENCY)
     ${DOWNLOAD_DIR}/hisi-model-0.1.0.tar.gz
     SHA256
     e3b9e9c7f9f62f1f6c20a70b2c5220ae9303caaf610d5c61e2a40a4ac41e3bf4
-    ${MODEL_FILE_PREFIX})
+    ${RESOURCE_PREFIX}/models)
+  download_and_extract(
+    https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/hisi/Adobe-SongTi-Std-L.zip
+    ${DOWNLOAD_DIR}/Adobe-SongTi-Std-L.zip
+    SHA256
+    41a16d79b91ae10b712c116d49bb710101e74e51bbe68f50f932f8f2051ec528
+    ${RESOURCE_PREFIX}/fonts)
 endif()
 
 find_package(QuFaceSDK REQUIRED)
@@ -99,3 +105,7 @@ add_executable(main src/main.cpp ${_LIB_FILES} ${_LIB_IO_FILES} ${_APP_FILES})
 
 target_include_directories(main PRIVATE quface/include src src/app src/lib)
 target_link_libraries(main QuFaceSDK::faceServer freetype)
+
+install(TARGETS main DESTINATION .)
+install(DIRECTORY ${RESOURCE_PREFIX}/models/ ${RESOURCE_PREFIX}/fonts/ asserts/
+        DESTINATION .)
