@@ -60,10 +60,10 @@ if(DOWNLOAD_DEPENDENCY)
   set(DOWNLOAD_DIR "${PROJECT_DEPENDENCY_DIR}/download")
 
   download_and_extract(
-    https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/deps/prebuild-3rd-0.1.1.tar.gz
-    ${DOWNLOAD_DIR}/prebuild-3rd-0.1.1.tar.gz
+    https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/deps/prebuild-3rd-0.1.2.tar.gz
+    ${DOWNLOAD_DIR}/prebuild-3rd-0.1.2.tar.gz
     SHA256
-    d98865a5e83fdd7a1cd6ab1d034348915906e1e873477bfdd14b52ede127a480
+    2f129d529e599395b29b21b6d7d5b694b5f158f573433a2f911c834cb314e148
     ${THIRD_PARTY_PREFIX})
 
   download_and_extract(
@@ -75,9 +75,9 @@ if(DOWNLOAD_DEPENDENCY)
 
   download_and_extract(
     https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/releases/QuFaceSDK-0.9.2-hisi-rp-dv300.tar.gz
-    ${DOWNLOAD_DIR}/QuFaceSDK-0.9.2-hisi-rp-dv300.tar.gz
+    ${DOWNLOAD_DIR}/QuFaceSDK-0.9.3-hisi-rp-dv300.tar.gz
     SHA256
-    196a33e92866bd0d2abd2e18fe5ad3f0574f38eb9cd09bc7227cc546a975bbd8
+    521e7f7ba80875c7a317c30ecc58e1657c077dfa9cd6de47bd070f265acea808
     ${QUFACE_SDK_PREFIX})
 
   download_and_extract(
