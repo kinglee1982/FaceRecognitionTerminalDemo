@@ -125,7 +125,7 @@ static void utf8_to_unicode(const char *pInBuf, int inLen, char *pOutbuf) {
 }
 
 CvxText *CvxText::getInstance() {
-    static CvxText self("wqy-wmh.ttf");
+    static CvxText self("Adobe-SongTi-Std-L-2.otf");
     return &self;
 }
 
