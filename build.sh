@@ -7,6 +7,7 @@ cmake_generator="Unix Makefiles"
 
 source_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 build_root_dir="$source_dir/build"
+clean_3rd="no"
 
 for i in "$@"; do
     case $i in
@@ -22,6 +23,10 @@ for i in "$@"; do
         cmake_generator="Ninja"
         shift # past argument with no value
         ;;
+    --clean-3rd)
+        clean_3rd="yes"
+        shift # past argument with no value
+        ;;
     *)
         # unknown option
         ;;
@@ -31,6 +36,22 @@ done
 build_dir=$build_root_dir/$build_type
 dep_dir=$source_dir/deps
 install_dir=$build_dir/install
+
+dep_sub_dirs="qufacesdk 3rd rp-dv300"
+if [[ $clean_3rd == "yes" ]]; then
+    echo "Cleaning dep dir ..."
+    for d in $dep_sub_dirs; do
+        rm -rf $source_dir/deps/$d || true
+        echo "Clean dir: $source_dir/deps/$d"
+    done
+    echo "Cleaning dep dir done"
+else
+    for d in $dep_sub_dirs; do
+        if [ -d $source_dir/deps/$d ]; then
+            echo "[WARN] '$source_dir/deps/$d' exists, won't update"
+        fi
+    done
+fi
 
 mkdir -p $build_dir || true
 pushd $build_dir
