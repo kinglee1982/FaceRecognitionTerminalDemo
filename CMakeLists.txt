@@ -77,7 +77,7 @@ if(DOWNLOAD_DEPENDENCY)
     https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/releases/QuFaceSDK-0.9.3-hisi-rp-dv300.tar.gz
     ${DOWNLOAD_DIR}/QuFaceSDK-0.9.3-hisi-rp-dv300.tar.gz
     SHA256
-    4d61f8104acdcdbfcd1b64670466363f942684cc5c27cf3b63b212d751a2b825
+    28e5495d6e818ebb93963869701d6677341400c44e7dce645d1a62515a8a80b4
     ${QUFACE_SDK_PREFIX})
 
   download_and_extract(
