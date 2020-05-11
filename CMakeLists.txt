@@ -60,10 +60,10 @@ if(DOWNLOAD_DEPENDENCY)
   set(DOWNLOAD_DIR "${PROJECT_DEPENDENCY_DIR}/download")
 
   download_and_extract(
-    https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/deps/prebuild-3rd-0.1.0.tar.gz
-    ${DOWNLOAD_DIR}/prebuild-3rd-0.1.0.tar.gz
+    https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/deps/prebuild-3rd-0.1.1.tar.gz
+    ${DOWNLOAD_DIR}/prebuild-3rd-0.1.1.tar.gz
     SHA256
-    65bbd66b356eb2886568e6851bb6b6709d25bfad92147f9276f3324313c55c39
+    d98865a5e83fdd7a1cd6ab1d034348915906e1e873477bfdd14b52ede127a480
     ${THIRD_PARTY_PREFIX})
 
   download_and_extract(
