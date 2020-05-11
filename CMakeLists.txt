@@ -60,10 +60,10 @@ if(DOWNLOAD_DEPENDENCY)
   set(DOWNLOAD_DIR "${PROJECT_DEPENDENCY_DIR}/download")
 
   download_and_extract(
-    https://cdn.quvision.com/qufacesdk/deps/prebuild-3rd-0.1.0.tar.gz
+    https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/deps/prebuild-3rd-0.1.0.tar.gz
     ${DOWNLOAD_DIR}/prebuild-3rd-0.1.0.tar.gz
     SHA256
-    3e1242044b9f8f9257911183e77d46a5e7cd1459e656c2ca0d68b6cece61860e
+    65bbd66b356eb2886568e6851bb6b6709d25bfad92147f9276f3324313c55c39
     ${THIRD_PARTY_PREFIX})
 
   download_and_extract(
@@ -74,14 +74,14 @@ if(DOWNLOAD_DEPENDENCY)
     ${HISI_SDK_PREFIX})
 
   download_and_extract(
-    https://cdn.quvision.com/qufacesdk/releases/QUFaceSDK-0.1.0-hisi-ai-dv300.tar.gz
+    https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/releases/QUFaceSDK-0.1.0-hisi-ai-dv300.tar.gz
     ${DOWNLOAD_DIR}/QUFaceSDK-0.1.0-hisi-ai-dv300.tar.gz
     SHA256
     61c97b1bd8a1a0fe443b46de3e056f2ce7f7c88538fc80c696d4f72418463149
     ${QUFACE_SDK_PREFIX})
 
   download_and_extract(
-    https://cdn.quvision.com/qufacesdk/hisi/hisi-model-0.1.0.tar.gz
+    https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/hisi/hisi-model-0.1.0.tar.gz
     ${DOWNLOAD_DIR}/hisi-model-0.1.0.tar.gz
     SHA256
     e3b9e9c7f9f62f1f6c20a70b2c5220ae9303caaf610d5c61e2a40a4ac41e3bf4
