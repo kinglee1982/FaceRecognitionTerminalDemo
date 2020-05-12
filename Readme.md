@@ -17,7 +17,8 @@ git clone https://github.com/suanzi-ai/FaceRecognitionTerminalDemo.git
 ### 编译依赖：
 
 ```bash
-sudo apt install cmake ninja
+sudo apt install ninja-build
+pip install cmake
 ```
 
 ### 编译
