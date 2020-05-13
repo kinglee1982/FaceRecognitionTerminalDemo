@@ -74,10 +74,10 @@ if(DOWNLOAD_DEPENDENCY)
     ${HISI_SDK_PREFIX})
 
   download_and_extract(
-    https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/releases/QuFaceSDK-0.10.0-hisi-rp-dv300.tar.gz
-    ${DOWNLOAD_DIR}/QuFaceSDK-0.10.0-hisi-rp-dv300.tar.gz
+    https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/releases/QuFaceSDK-0.10.1-hisi-rp-dv300.tar.gz
+    ${DOWNLOAD_DIR}/QuFaceSDK-0.10.1-hisi-rp-dv300.tar.gz
     SHA256
-    a88aca0a89c62d747a0a55c63085b35a5d5bbbe4d5ac8f5edab23a8ce0fb35b1
+    ad0100acde0b0fef2c8715c6a30b117f2871864f6f10a9e26b10812635bab2ef
     ${QUFACE_SDK_PREFIX})
 
   download_and_extract(
