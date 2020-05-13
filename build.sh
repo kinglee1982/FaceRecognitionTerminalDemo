@@ -37,7 +37,7 @@ build_dir=$build_root_dir/$build_type
 dep_dir=$source_dir/deps
 install_dir=$build_dir/install
 
-dep_sub_dirs="qufacesdk 3rd rp-dv300"
+dep_sub_dirs="qufacesdk 3rd rp-dv300 resources"
 if [[ $clean_3rd == "yes" ]]; then
     echo "Cleaning dep dir ..."
     for d in $dep_sub_dirs; do
