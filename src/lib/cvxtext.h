@@ -77,7 +77,7 @@ private:
     *
     * \return 返回成功输出的字符长度，失败返回-1.
     */
-    int putText(cv::Mat &img, const wchar_t *text, cv::Point pos, cv::Scalar color);
+    int putText(cv::Mat &img, const wchar_t *text, int len, cv::Point pos, cv::Scalar color);
 
     // 输出当前字符, 更新m_pos位置
     void putWChar(cv::Mat& img, wchar_t wc, cv::Point &pos, cv::Scalar &color);

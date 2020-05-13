@@ -7,6 +7,8 @@
 #include "lib/logger.h"
 #include "sz_common.h"
 #include "sz_image_module.h"
+#include <signal.h>
+
 
 using namespace suanzi;
 
@@ -25,9 +27,17 @@ CameraReader::CameraReader(Quface *parent) {
   on_not_detected();
 
   avatar_bg_ = cv::imread("background.jpg");
+  if (avatar_bg_.empty()) {
+	SZ_LOG_ERROR("avatar_bg_ image read failed!");
+	raise(SIGSEGV);
+  }
   cv::resize(avatar_bg_, avatar_bg_, {kTargetWidth, kTargetHeight});
 
   avatar_ = cv::imread("avatar_unknown.jpg");
+  if (avatar_.empty()) {
+	SZ_LOG_ERROR("avatar_unknown image read failed!");
+	raise(SIGSEGV);
+  }
   cv::resize(avatar_, avatar_, {kAvatarWidth, kAvatarHeight});
 }
 
@@ -83,7 +93,8 @@ void CameraReader::on_extracted(ExtractionResult &extraction) {
 
       SZ_IMAGE_CTX *imageCtx;
       SZ_INT32 width, height;
-      parent_->get_avatar(extraction.person.id, &imageCtx, &width, &height);
+      if (SZ_RETCODE_OK != parent_->get_avatar(extraction.person.id, &imageCtx, &width, &height))
+	  	return;
 
       SZ_BYTE *imageData;
       SZ_IMAGE_copyData(imageCtx, &imageData);
@@ -162,13 +173,12 @@ void CameraReader::draw_detection(cv::Mat &bgr) {
 
 void CameraReader::draw_recognition(cv::Mat &bgr) {
   std::unique_lock<std::mutex> lock(recognition_mutex_);
-  std::string name;
+  std::string name = "";
   if (recognition_.person == PERSON_UNKNOWN) {
     name = "访客";
   } else if (recognition_.person != PERSON_NOT_DETECTED) {
     name = recognition_.person.name;
   }
-
   if (recognition_.person != PERSON_NOT_DETECTED) {
     avatar_bg_.copyTo(bgr(kTargetRect));
     avatar_.copyTo(bgr(kAvatarRect));

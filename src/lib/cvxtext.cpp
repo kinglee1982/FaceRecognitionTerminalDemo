@@ -110,18 +110,21 @@ static int utf8_to_unicode_one(const unsigned char *pInput, unsigned long *pUnic
     return utfbytes;
 }
 
-static void utf8_to_unicode(const char *pInBuf, int inLen, char *pOutbuf) {
+static int utf8_to_unicode(const char *pInBuf, int inLen, char *pOutbuf) {
     assert(pInBuf != NULL && pOutbuf != NULL);
-    int inOffset = 0;
+    int inOffset = 0; 
     int outOffset = 0;
+	int retLen = 0;
     while(inOffset < inLen) {
         int tmpOutLen = 0;
         int tmpInLen = utf8_to_unicode_one((const unsigned char *)&pInBuf[inOffset], (unsigned long *)&pOutbuf[outOffset]);
-        if (tmpInLen == 0)
-            break;
+		retLen++;
         inOffset += tmpInLen;
         outOffset += 4;
+		if (tmpInLen == 0)
+            break;
     }
+	return retLen;
 }
 
 CvxText *CvxText::getInstance() {
@@ -139,7 +142,7 @@ CvxText::CvxText(const char* freeType)
 	SZ_LOG_ERROR("FT_Init_FreeType failed! {}", freeType);
 	raise(SIGSEGV);
     }
-    if(FT_New_Face(m_library, freeType, 0, &m_face)) {
+    if(FT_New_Face(m_library, freeType, 0, &m_face)) {    
 	SZ_LOG_ERROR("FT_New_Face failed! {}", freeType);
   	raise(SIGSEGV);
     }
@@ -200,18 +203,20 @@ int CvxText::putText(cv::Mat &img, const char *text, cv::Point pos, cv::Scalar c
     }
 
     int len = strlen(text);
+	if (len <= 1)
+		return 0;
     wchar_t ucs4Buf[len] = {'\0'};
-    utf8_to_unicode(text, len, (char *)ucs4Buf);
-    return putText(img, (const wchar_t *)ucs4Buf, pos, color);
+    len = utf8_to_unicode(text, len, (char *)ucs4Buf);
+    return putText(img, (const wchar_t *)ucs4Buf, len, pos, color);
 }
 
 
-int CvxText::putText(cv::Mat& img, const wchar_t* text, cv::Point pos, cv::Scalar color) {
+int CvxText::putText(cv::Mat& img, const wchar_t* text, int len, cv::Point pos, cv::Scalar color) {
     if (img.data == nullptr) return -1;
-    if (text == nullptr) return -1;
+    if (text == nullptr) return -1;  
 
     int i;
-    for(i = 0; text[i] != '\0'; ++i) {
+    for(i = 0; i < len; ++i) {
         // 输出当前的字符
         putWChar(img, text[i], pos, color);
     }
