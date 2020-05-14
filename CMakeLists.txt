@@ -120,6 +120,8 @@ if(DOWNLOAD_DEPENDENCY)
 endif()
 
 find_package(QuFaceSDK REQUIRED)
+message(STATUS "Found QuFaceSDK ${QuFaceSDK_VERSION}")
+
 find_package(freetype REQUIRED)
 
 aux_source_directory(src/lib _LIB_FILES)
