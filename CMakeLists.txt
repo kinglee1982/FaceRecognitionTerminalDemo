@@ -19,7 +19,7 @@ endif()
 
 project(
   FaceRecognitionTerminalDemo
-  VERSION 0.1.0
+  VERSION 0.1.1
   DESCRIPTION "FaceRecognitionTerminal Demo for Hi3516DV300")
 
 set(CMAKE_CXX_STANDARD 11)
