@@ -36,5 +36,6 @@ cd FaceRecognitionTerminalDemo
 
 ```bash
 ntpd -qNn -p ntp4.aliyun.com # 校准系统时间
+cp facemodel_vX.bin  facemodel.bin # 修改模型名字，X代表具体版本号
 ./main -display hdmi #输出视频至与开发板连接的 HDMI 显示器
 ```
