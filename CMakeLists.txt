@@ -104,7 +104,7 @@ if(DOWNLOAD_DEPENDENCY)
     4ccfeaf60be028ff0484e62e19ddd1f977710321390b98b36f543f1ab4c8c488
     EXTRACT_DIR
     ${RESOURCE_PREFIX}/models
-    RM_EXTRAT_DIR_IF_EXISTS)
+    REMOVE_EXTRACT_DIR_IF_EXISTS)
   download_and_extract(
     URL
     https://quvision.oss-cn-beijing.aliyuncs.com/qufacesdk/hisi/Adobe-SongTi-Std-L.zip
@@ -116,7 +116,7 @@ if(DOWNLOAD_DEPENDENCY)
     41a16d79b91ae10b712c116d49bb710101e74e51bbe68f50f932f8f2051ec528
     EXTRACT_DIR
     ${RESOURCE_PREFIX}/fonts
-    RM_EXTRAT_DIR_IF_EXISTS)
+    REMOVE_EXTRACT_DIR_IF_EXISTS)
 endif()
 
 find_package(QuFaceSDK REQUIRED)
