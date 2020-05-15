@@ -27,7 +27,7 @@ class FaceExtractor : public Handler<ExtractionMessage> {
   };
 
   const SZ_INT32 kMinHistorySize = 3;
-  const SZ_INT32 kMaxHistorySize = 6;
+  const SZ_INT32 kMaxHistorySize = 16;
 
   const SZ_INT32 kMinRecognizedCount = 3;
   const SZ_FLOAT kMinRecognizedScore = .5f;

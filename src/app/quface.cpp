@@ -53,6 +53,7 @@ void Quface::release() {
   if (db_ != NULL) SZ_DATABASE_CTX_release(db_);
 
   if (dnn_ != NULL) SZ_FACE_CTX_release(dnn_);
+  if (dnn_server_ != NULL) SZ_FACE_CTX_release(dnn_server_);
 }
 
 SZ_RETCODE Quface::add_person(const std::string& name, SZ_INT32 face_id,
@@ -196,7 +197,7 @@ SZ_RETCODE Quface::initialize_database() {
     SZ_LOG_ERROR("SZ_DATABASE_CTX_create failed");
     return SZ_RETCODE_FAILED;
   }
-  db_sync_ = SZ_FACE_SERVER_CTX_create(network_, dnn_, db_);
+  db_sync_ = SZ_FACE_SERVER_CTX_create(network_, dnn_server_, db_);
   if (db_sync_ == NULL) {
     SZ_LOG_ERROR("SZ_FACE_SERVER_CTX_create failed");
     return SZ_RETCODE_FAILED;
@@ -228,10 +229,20 @@ SZ_RETCODE Quface::initialize_dnn(const std::string& model_file) {
   pbuf->sgetn((char*)model, model_length);
 
   dnn_ = SZ_FACE_CTX_create(license_, model, model_length);
+
+  pbuf->pubseekpos(0, model_fin.in);
+  pbuf->sgetn((char*)model, model_length);
+  dnn_server_ = SZ_FACE_CTX_create(license_, model, model_length);
   delete[] model;
 
   if (dnn_ == NULL) {
-    SZ_LOG_ERROR("SZ_FACE_CTX_create failed");
+    SZ_LOG_ERROR("SZ_FACE_CTX_create dnn_ failed");
+    model_fin.close();
+    return SZ_RETCODE_FAILED;
+  }
+
+  if (dnn_server_ == NULL) {
+    SZ_LOG_ERROR("SZ_FACE_CTX_create  dnn_server_ failed");
     model_fin.close();
     return SZ_RETCODE_FAILED;
   }

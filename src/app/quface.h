@@ -64,6 +64,7 @@ class Quface {
   SZ_NET_CTX *network_ = NULL;
   SZ_LICENSE_CTX *license_ = NULL;
   SZ_FACE_CTX *dnn_ = NULL;
+  SZ_FACE_CTX *dnn_server_ = NULL;
   SZ_DATABASE_CTX *db_ = NULL;
   SZ_FACE_SERVER_CTX *db_sync_ = NULL;
 
